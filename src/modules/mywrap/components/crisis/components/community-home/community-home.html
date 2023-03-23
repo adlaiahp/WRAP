@@ -1,0 +1,48 @@
+<!--
+  Generated template for the CommunityHomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Home/Community/Respite Plan</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p>
+    Many people are setting up plans so that they can stay at home and still get the care they need if they are in a
+    crisis by having around the clock care from supporters and regular visits with health care providers. Many
+    community care and respite centers are being setup as an alternative to hospitalization where you can be
+    supported by peers until you feel better and can take care of yourself. Set up a plan so that you can stay at
+    home or in the community and still get the care and support you need.
+  </p>
+  <ion-list>
+    <ion-item [formGroup]="HomeForm">
+      <ion-textarea autosize formControlName="HomeCommunity" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+        id="HomeCommunity" (ionBlur)="UpdateItem($event)">
+      </ion-textarea>
+    </ion-item>
+    <p style="text-align: center">
+        <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+      </p>
+  </ion-list>
+
+  <ion-list>
+    <ion-item class="page-slider">
+      <ion-icon item-start large name="arrow-dropleft-circle" (click)="navigateleft()"></ion-icon>
+      <ion-icon item-end large name="arrow-dropright-circle" (click)="navigateright()"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AboutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>ABOUT</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div><strong>Information and Help</strong></div>
+  <p>
+    The Wellness Recovery Action PlanⓇ, or WRAPⓇ, is an evidence-based system that is used world-wide by people who are
+    dealing with mental health and other kinds of health challenges, and by people who want to attain the highest
+    possible level of wellness. It was developed by a group of people who have a lived experience of mental health
+    difficulties; people who were searching for ways to resolve issues that had been troubling them for a long time.
+    WRAPⓇ involves listing your personal resources (Wellness Tools), and then using these resources to develop Action
+    Plan to use in specific situations which are determined by you. 
+  </p>
+  <p>
+    WRAPⓇ is universal - it is for anyone, any time, and for any of life's challenges.
+  </p>
+  <!-- <p>
+    Mary Ellen Copeland PhD is a mental health recovery researcher, educator and author.
+  </p> -->
+  <p>To see the full catalog of WRAP products, visit</p>
+  <p (click)="openWithInAppBrowser('http://www.wrapandrecoverybooks.com/store')">
+    <a href="http://www.wrapandrecoverybooks.com/store">www.WRAPandRecoveryBooks.com</a>
+  </p>
+  <p>For information on WRAPⓇ training, contact
+    <a href="mailto:info@WRAPandRecoveryBooks.com">info@WRAPandRecoveryBooks.com</a>
+  </p>
+  <div><strong>Terms and Conditions </strong></div>
+  <p class="cont" (click)="openWithInAppBrowser('http://mentalhealthrecovery.com/privacy')"> <a href="http://mentalhealthrecovery.com/privacy/"></a>Terms
+    and Conditions</p>
+  <div><strong>Privacy </strong></div>
+  <p class="cont" (click)="openWithInAppBrowser('http://mentalhealthrecovery.com/privacy')"> <a href="http://mentalhealthrecovery.com/privacy/"></a>Privacy</p>
+</ion-content>

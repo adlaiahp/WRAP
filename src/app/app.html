@@ -1,0 +1,56 @@
+<!-- <ion-menu [content]="content" id="menu-avatar" side="right"> -->
+<ion-menu [content]="content" [swipeEnabled]="true" id="Sidemenu" side="left">
+  <ion-content class="alternative-bg">
+    <ion-list class="accordion-list">
+      <ion-item *ngFor="let item of items ; let i = index" class="sidemenu-item">
+        <div *ngIf="item.sub.length > 0" (click)="toggleSection(i);" detail-none [ngClass]="{'section' : item.open , 'section':!item.open}">
+          {{item.name}}
+          <ion-icon name="arrow-dropright" *ngIf="!item.open" float-right></ion-icon>
+          <ion-icon name="arrow-dropdown" *ngIf="item.open" float-right></ion-icon>
+        </div>
+        <div *ngIf="item.sub.length == 0" (click)="openPage(item.component)">
+          {{item.name}}
+        </div>
+        <ion-list *ngIf="item.sub.length > 0 && item.open" class="sub-menu-list" color="sidemenu-sub">
+          <ion-item *ngFor="let subItem of item.sub">
+            <div style="white-space: normal;" detail-none (click)="openPage(subItem.component)">
+              {{subItem.name}}
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-menu [content]="content" [swipeEnabled]="false" id="AddTool" side="right">
+
+  <ion-content padding>
+    <div>
+      <p>Define your action plan. Choose Wellness Tools from your tool box you can use to help yourself feel better
+        when you experience a triggering event.</p>
+      <ion-list class="sidemenu-list">
+        <ion-item *ngFor="let item of wellitems" class="header">
+          <ion-avatar item-left *ngIf="item.IconAsset">
+            <img src="{{item.IconAsset}}" width="32">
+          </ion-avatar>
+          <ion-label>{{item.Content}}</ion-label>
+          <ion-checkbox [(ngModel)]="item.check" item-right></ion-checkbox>
+        </ion-item>
+      </ion-list>
+
+      <div class="cta-1" style="text-align: center">
+        <ion-item style="text-align: center" no-lines>
+          <button color="tertiary" ion-button class="header" round menuClose="right">Cancel</button>
+          <button ion-button round (click)="Save()">Save</button>
+          <br />
+        </ion-item>
+        <ion-item style="text-align: center" no-lines>
+          <button color="secondary" class="edit-btn" ion-button round (click)="EditTool()">Edit your Toolbox</button>
+
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+<ion-nav root="HomePage" #content swipeBackEnabled="false"></ion-nav>

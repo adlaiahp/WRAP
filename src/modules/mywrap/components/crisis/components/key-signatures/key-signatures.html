@@ -1,0 +1,52 @@
+<!--
+  Generated template for the KeySignaturesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Key Signatures</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <p>This plan can be the basis for an advance directive, but it is not a legal document. You can take the following steps to
+      help
+      insure that your plan will be followed:</p>
+    <ul>
+      <li>
+        Make sure your plan is "doable", your supporters can follow the plan and it does not include any unreasonable
+        demands.
+      </li>
+      <li>
+        Include the phone number of your state agency of protection and advocacy. Tell your supporters to contact them
+        if your wishes are not being honored.
+      </li>
+      <li>
+        Make paper copies of this document, have them all signed by at least two trusted supporters and a person who
+        has been given "Power of Attorney", distribute these copies to your supporters and to any agencies or places
+        where you might be taken for protection or to receive treatment.
+      </li>
+    </ul>
+    <p>
+      A portion of this page is not accessible from the application. When you select to email the WRAP <strong>(accessible
+        on the About screen)</strong>, signature fields will be added to the page, for key signatures.
+    </p>
+  </div>
+  <ion-list>
+    <ion-item class="page-slider">
+      <ion-icon item-start large name="arrow-dropleft-circle" (click)="navigateleft()"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

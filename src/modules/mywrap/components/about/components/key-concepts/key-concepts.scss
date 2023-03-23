@@ -1,0 +1,14 @@
+page-key-concepts {
+    input[type=text]:focus {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+      input {
+          border-radius: 10px;
+          height: 3.5rem;
+          width: 100%!important;
+      }
+      input{
+          border-bottom: transparent!important;
+      }
+}

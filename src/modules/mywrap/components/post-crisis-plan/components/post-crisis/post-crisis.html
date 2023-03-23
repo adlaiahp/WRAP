@@ -1,0 +1,446 @@
+<!--
+  Generated template for the PostCrisisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Post-Crisis Plan</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ng-container [ngSwitch]="pageNo">
+    <ion-list *ngSwitchCase="1" [formGroup]="PostCrisisForm">
+      <p><strong>Post-Crisis Plan</strong></p>
+      <div></div>
+      <p>After a crisis, it can take time to get back to Normal. Use your post-crisis plan to develop your plan for easing back into your responsibilities, dealing with any consequences resulting from the crisis, and showing appreciation for the people who supported you during the crisis.  </p>
+      <p text-wrap>1.This is what I look like when I’m out of the crisis and ready to use this post-crisis plan:</p>
+      <ion-list>
+        <ion-item>
+          <ion-textarea autosize type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="OutOfCrisis" id="OutOfCrisis" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p>2. This is how I want to feel when I’m fully recovered from this crisis:</p>
+      <ion-list>
+        <ion-item>
+          <ion-textarea autosize type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="FeelRecovered" id="FeelRecovered" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p text-wrap>3. Post Crisis Supporters List:</p>
+      <p text-wrap>This is what I look like when I’m out of the crisis and ready to use this post-crisis plan:</p>
+      <ion-list *ngFor="let item of supportItems;let i = index;let last=last">
+        <ion-item class="daily-maintenance-list">
+          <ion-label>Who(Name)</ion-label>
+          <ion-input [style.opacity]="(!last || isAddSupport) ? 0.4 : 1" type="text" value={{item.WhoName}} (ionFocus)="ToggleMultiInput($event);"
+            (ionBlur)="ToggleMultiUpdate($event,'AddSupport','WhoName',item.Id);" placeholder="Enter Name"></ion-input>
+        </ion-item>
+        <ion-item class="daily-maintenance-list">
+          <ion-label>Phone</ion-label>
+          <ion-input [style.opacity]="(!last || isAddSupport) ? 0.4 : 1" type="tel" maxlength="10" value={{item.Phone}}
+            (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddSupport','Phone',item.Id);"
+            placeholder="Enter Number"></ion-input>
+        </ion-item>
+        <ion-item class="daily-maintenance-list">
+          <ion-label>Email</ion-label>
+          <ion-input [style.opacity]="(!last || isAddSupport) ? 0.4 : 1" type="email" value={{item.Email}} (ionFocus)="ToggleMultiInput($event);"
+            (ionBlur)="ToggleMultiUpdate($event,'AddSupport','Email',item.Id);" placeholder="Enter mail"></ion-input>
+        </ion-item>
+        <ion-item class="daily-maintenance-list">
+          <ion-label>Who Need Them</ion-label>
+          <ion-input [style.opacity]="(!last || isAddSupport) ? 0.4 : 1" type="text" value={{item.NeedThem}} (ionFocus)="ToggleMultiInput($event);"
+            (ionBlur)="ToggleMultiUpdate($event,'AddSupport','NeedThem',item.Id);" placeholder="Enter Text"></ion-input>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" id="supporterRemove" (click)="DeleteMultiList('AddSupport',item.Id);">
+            <ion-icon name="remove"></ion-icon>&nbsp;Remove
+          </button>
+        </ion-item>
+      </ion-list>
+      <ion-item class="add-item-btn">
+        <button ion-button small clear id="supporterAdd" color="primary" (click)="AddMultiListItem('AddSupport');">
+          <ion-icon name="add"></ion-icon>&nbsp;Add Item
+        </button>
+      </ion-item>
+      <p text-wrap>4. If you are being discharged from a treatment facility, do you have a place to go that is
+        safe and comfortable?</p>
+      <ion-item>
+        <ion-label>Select</ion-label>
+        <ion-select id="IsSafePlace" formControlName="IsSafePlace" (ionBlur)="IsSafePlace($event);">
+          <ion-option value="0">Select</ion-option>
+          <ion-option value="1">Yes</ion-option>
+          <ion-option value="2">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <br />
+      <ion-item *ngIf="isSafePlace">
+        <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="SafePlace"
+          id="SafePlace" (ionBlur)="UpdateItem($event)"></ion-input>
+      </ion-item>
+      <p text-wrap>5.If you have been hospitalized, your first few hours at home are very important, Will you feel safe
+        and be safe at home?</p>
+      <ion-item>
+        <ion-label>Select</ion-label>
+        <ion-select id="IsHomeSafe" formControlName="IsHomeSafe" (ionBlur)="IsHomeSafe($event)">
+          <ion-option value="0">Select</ion-option>
+          <ion-option value="1">Yes</ion-option>
+          <ion-option value="2">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <br />
+      <ion-item *ngIf="isHomeSafe">
+        <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="HomeSafe"
+          id="HomeSafe" (ionBlur)="UpdateItem($event)"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="2" [formGroup]="PostCrisisForm">
+      <p>Respond to the following questions to assit you in your recovery</p>
+      <p><strong>Questions are listed below</strong></p>
+      <div class="questions">
+        <p text-wrap>6. I would like this person to take me home:</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="PersonToHome"
+            id="PersonToHome" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+        <p>or</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="OrPersonToHome"
+            id="OrPersonToHome" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>7. I would like this person to stay with me:</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="StayPerson"
+            id="StayPerson" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+        <p>or</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="OrStayPerson"
+            id="OrStayPerson" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>8. When I get home I would like to:</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="ThingsILike"
+            id="ThingsILike" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+        <p>or</p>
+        <ion-item>
+          <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="OrThingsILike"
+            id="OrThingsILike" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>9. If the following things were in place, it would ease my return:</p>
+        <ion-item>
+          <ion-textarea autosize id="EaseMyReturn" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="EaseMyReturn" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>10. Things I must take care of as soon as I can:</p>
+        <ion-item>
+          <ion-textarea autosize id="TakeCareSoon" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="TakeCareSoon" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="3" [formGroup]="PostCrisisForm">
+      <p>Respond to the following questions to assit you in your recovery</p>
+      <p><strong>Questions are listed below</strong></p>
+      <div class="questions">
+        <p text-wrap>11.Things that I can ask someone else to do for me:</p>
+        <ion-item>
+          <ion-textarea autosize id="SomeoneToDo" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="SomeoneToDo" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>12. Things that can wait until I feel better:</p>
+        <ion-item>
+          <ion-textarea autosize id="WaitUntilBetter" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="WaitUntilBetter" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>13. Things I need to do for myself every day:</p>
+        <ion-item>
+          <ion-textarea autosize id="MustThingMyself" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="MustThingMyself" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>14. Things I might need to do every day:</p>
+        <ion-item>
+          <ion-textarea autosize id="CanThingsMyself" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="CanThingsMyself" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>15. People, places, and things I need to avoid:</p>
+        <ion-item>
+          <ion-textarea autosize id="AvoidThingsPeople" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="AvoidThingsPeople" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="4">
+      <p>Respond to the following questions to assit you in your recovery</p>
+      <p><strong>Questions are listed below</strong></p>
+      <div class="questions">
+        <p text-wrap>16. Signs that I may be beginning to feel worse:</p>
+        <ion-list>
+          <ion-item class="daily-maintenance-list" *ngFor="let item of Worseitems;let index = index;trackBy:trackByIndex;">
+            <inline-form text-wrap [(ngModel)]="Worseitems[index].Content" Id={{Worseitems[index].Id}} ColumnName=""
+              PageType="7" [required]="true" type="text">
+            </inline-form>
+            <ion-icon name="close" color="header" item-end (click)="DeleteWorseItem(item.Id)"></ion-icon>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-item class="daily-maintenance-list" *ngIf="isWorse" [formGroup]="PostCrisisForm">
+            <ion-input type="text" id="Worse" formControlName="WorseContent" (ionBlur)="InsertWorseItem()" placeholder="Enter your text"></ion-input>
+            <ion-icon name="close" color="header" item-end (click)="DeleteWorseItem()"></ion-icon>
+          </ion-item>
+          <ion-item class="add-item-btn">
+            <button ion-button small clear color="primary" (click)="ToggleWorseInput()">
+              <ion-icon name="add"></ion-icon>&nbsp;Add Item
+            </button>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="questions">
+        <p text-wrap>17. Wellness Tools I will use if I am starting to feel worse (select from your Wellness Toolbox):</p>
+        <ion-list class="items" *ngFor="let items of tools">
+          <ion-item class="items-list">
+            <img src="{{items.IconAsset}}" item-start width="32">
+            <span class="list-title"> {{items.Content}} </span>
+            <button ion-button clear color="dark" item-end large>
+              <ion-icon name="remove" (click)="DeleteTool(items.Id)"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-list>
+        <p class="add-a-tool">
+          <button ion-button color="dark" full outline (click)="ToggleMenu()">+ Build Your Wellness Toolbox</button>
+        </p>
+      </div>
+      <div class="questions">
+        <p text-wrap>18. Things I need to do to prevent more negative effects from this crisis:</p>
+        <ion-item [formGroup]="PostCrisisForm">
+          <ion-textarea autosize id="PreventRepercussion" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="PreventRepercussion" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>19. People I need to thank:</p>
+
+        <ion-list *ngFor="let item of peopleThankItems;let i = index;let last=last">
+          <ion-item class="daily-maintenance-list">
+            <ion-label>Name</ion-label>
+            <ion-input [style.opacity]="(!last || isAddThank) ? 0.4 : 1" type="text" value={{item.PeopleName}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddThank','PeopleName',item.Id);"
+              placeholder="Enter Name"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>When I will thank them</ion-label>
+            <ion-input [style.opacity]="(!last || isAddThank) ? 0.4 : 1" type="text" value={{item.WhenThank}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddThank','WhenThank',item.Id);"
+              placeholder="Enter When"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>How I will thank them</ion-label>
+            <ion-input [style.opacity]="(!last || isAddThank) ? 0.4 : 1" type="text" value={{item.HowThank}} (ionFocus)="ToggleMultiInput($event);"
+              (ionBlur)="ToggleMultiUpdate($event,'AddThank','HowThank',item.Id);" placeholder="Enter How"></ion-input>
+          </ion-item>
+          <ion-item class="add-item-btn">
+            <button ion-button small clear color="primary" id="thankRemove" (click)="DeleteMultiList('AddThank',item.Id);">
+              <ion-icon name="remove"></ion-icon>&nbsp;Remove
+            </button>
+          </ion-item>
+        </ion-list>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear id="thankAdd" color="primary" (click)="AddMultiListItem('AddThank');">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>20. People I need to apologize:</p>
+        <ion-list *ngFor="let item of apologizeItems;let i = index;let last=last">
+          <ion-item class="daily-maintenance-list">
+            <ion-label>Name</ion-label>
+            <ion-input [style.opacity]="(!last || isAddApologize) ? 0.4 : 1" type="text" value={{item.ApologizeName}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddApologize','ApologizeName',item.Id);"
+              placeholder="Enter Name"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>When I will apologize</ion-label>
+            <ion-input [style.opacity]="(!last || isAddApologize) ? 0.4 : 1" type="text" value={{item.WhenApologize}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddApologize','WhenApologize',item.Id);"
+              placeholder="Enter When"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>How I will apologize</ion-label>
+            <ion-input [style.opacity]="(!last || isAddApologize) ? 0.4 : 1" type="text" value={{item.HowApologize}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddApologize','HowApologize',item.Id);"
+              placeholder="Enter How"></ion-input>
+          </ion-item>
+          <ion-item class="add-item-btn">
+            <button ion-button small clear color="primary" id="ApologizeRemove" (click)="DeleteMultiList('AddApologize',item.Id);">
+              <ion-icon name="remove"></ion-icon>&nbsp;Remove
+            </button>
+          </ion-item>
+        </ion-list>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear id="ApologizeAdd" color="primary" (click)="AddMultiListItem('AddApologize');">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </div>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="5" [formGroup]="PostCrisisForm">
+      <p>Respond to the following questions to assit you in your recovery</p>
+      <p><strong>Questions are listed below</strong></p>
+      <div class="questions">
+        <p text-wrap>21. People with whom I need to make amends:</p>
+        <ion-list *ngFor="let item of amendsItems;let i = index;let last=last">
+          <ion-item class="daily-maintenance-list">
+            <ion-label>Name</ion-label>
+            <ion-input [style.opacity]="(!last || isAddAmends) ? 0.4 : 1" type="text" value={{item.AmendsName}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddAmends','AmendsName',item.Id);"
+              placeholder="Enter Name"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>When I will make amends</ion-label>
+            <ion-input [style.opacity]="(!last || isAddAmends) ? 0.4 : 1" type="text" value={{item.WhenAmends}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddAmends','WhenAmends',item.Id);"
+              placeholder="Enter When"></ion-input>
+          </ion-item>
+          <ion-item class="daily-maintenance-list">
+            <ion-label>How I will make amends</ion-label>
+            <ion-input [style.opacity]="(!last || isAddAmends) ? 0.4 : 1" type="text" value={{item.HowAmends}}
+              (ionFocus)="ToggleMultiInput($event);" (ionBlur)="ToggleMultiUpdate($event,'AddAmends','HowAmends',item.Id);"
+              placeholder="Enter How"></ion-input>
+          </ion-item>
+          <ion-item class="add-item-btn">
+            <button ion-button small clear color="primary" id="AmendsRemove" (click)="DeleteMultiList('AddAmends',item.Id);">
+              <ion-icon name="remove"></ion-icon>&nbsp;Remove
+            </button>
+          </ion-item>
+        </ion-list>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear id="AmendsAdd" color="primary" (click)="AddMultiListItem('AddAmends');">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>22. Medical, Legal or financial issues that need to be resolved:</p>
+        <p>Issue:</p>
+        <ion-item>
+          <ion-input type="text" id="MedicalIssue" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="MedicalIssue" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+        <p>How I plan to resolve this issue:</p>
+        <ion-item>
+          <ion-input type="text" id="ResolveMedicalIssue" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="ResolveMedicalIssue" (ionBlur)="UpdateItem($event)"></ion-input>
+        </ion-item>
+        <hr class="line-break">
+      </div>
+      <div class="questions">
+        <p text-wrap>23. Things I need to do to prevent further loss:</p>
+        <ion-item>
+          <ion-textarea autosize id="PreventLoss" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="PreventLoss" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <div class="questions">
+        <p text-wrap>24. Things that will help ease my transition back to everyday life:</p>
+        <ion-item>
+          <ion-textarea autosize id="SignsPCOver" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="SignsPCOver" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>25.These are changes in my WRAP that might help prevent a crisis in the future:</p>
+        <ion-item>
+          <ion-textarea autosize id="PreventCrisisInFuture" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="PreventCrisisInFuture" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="6" [formGroup]="PostCrisisForm">
+      <p>Respond to the following questions to assit you in your recovery</p>
+      <p><strong>Questions are listed below</strong></p>
+      <div class="questions">
+        <p text-wrap>26. Changes in my Crisis Plan that might ease my recovery:</p>
+        <ion-item>
+          <ion-textarea autosize id="ChangesInCrisis" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="ChangesInCrisis" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>27. What are changes I want to make in my lifestyle and goals and how will I make them?</p>
+        <ion-item>
+          <ion-textarea autosize id="LifeStyle" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="LifeStyle" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <div class="questions">
+        <p text-wrap>28. What did I learn from this crisis?</p>
+        <ion-item>
+          <ion-textarea autosize id="LearnInCrisis" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="LearnInCrisis" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </div>
+      <hr class="line-break">
+      <p text-wrap>29. Are there changes I want or need to make in my life as a result of what I have learned?</p>
+      <ion-item>
+        <ion-label>Select</ion-label>
+        <ion-select id="IsChangeInLife" formControlName="IsChangeInLife" (ionBlur)="IsChangeInLife($event)">
+          <ion-option value="0">Select</ion-option>
+          <ion-option value="1">Yes</ion-option>
+          <ion-option value="2">No</ion-option>
+        </ion-select>
+      </ion-item>
+      <br />
+      <ion-item *ngIf="isChangeInLife">
+        <ion-input type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);" formControlName="ChangeInLife"
+          id="ChangeInLife" (ionBlur)="UpdateItem($event)"></ion-input>
+      </ion-item>
+      <p style="text-align: center">
+        <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+      </p>
+    </ion-list>
+  </ng-container>
+
+  <ion-list>
+    <ion-item class="page-slider">
+      <ion-icon item-start large name="arrow-dropleft-circle" *ngIf="this.pageNo > 1" (click)="navigateleft()"></ion-icon>
+      <p class="pagination">{{pageNo}}/{{maximumPage}}</p>
+      <ion-icon item-end large name="arrow-dropright-circle" *ngIf="this.pageNo < 6" (click)="navigateright()"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,38 @@
+page-post-crisis {
+    .page-slider {
+        background-color: transparent;
+        border: none;
+    }
+    .header-logo {
+        background-color: transparent !important;
+        box-shadow: none; // height: auto;
+        margin: -10px -10px 0;
+        img {
+            width: 54px;
+        }
+    }
+    .add-item-btn {
+        background: transparent;
+        border-bottom: none !important;
+        border-top: none !important;
+    }
+    .add-a-tool {
+        margin: 0px -16px;
+        background-color: gainsboro;
+    }
+    p.pagination {
+        font-weight: bold;
+        color: black;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .daily-maintenance-list {
+        background: transparent;
+        border-top: none !important;
+        border-bottom: 2px dashed grey;
+        ion-icon {
+            color: blue;
+            font-weight: bold;
+        }
+    }
+}

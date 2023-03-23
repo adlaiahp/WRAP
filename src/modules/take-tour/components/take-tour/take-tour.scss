@@ -1,0 +1,29 @@
+page-take-tour {
+    .md,
+    .ios,
+    .wp {
+        .swiper-slide .swiper-slide-active {
+            width: 100px; //your width here
+        }
+    }
+}
+
+page-take-tour .slide-zoom {
+    img {
+        width: 58%;
+        margin-bottom: 3rem;
+    }
+    ion-item {
+        background-color: transparent;
+    }
+    .page-slider {
+        background-color: transparent;
+        border: none;
+    }
+    p.pagination {
+        font-weight: bold;
+        color: black;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}

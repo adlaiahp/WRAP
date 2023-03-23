@@ -1,0 +1,47 @@
+<!--
+  Generated template for the AddtoolPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Wellness Toolbox</ion-title>
+    <button ion-button menuToggle icon-only start id="Sidemenu" color="light" style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="input-form">
+    <ion-item [formGroup]="ContentForm">
+      <ion-input type="text" formControlName="Content" placeholder="Enter your text"></ion-input>
+    </ion-item>
+  </div>
+  <ion-grid class="nav-grid">
+    <ion-row [class.blur-div]="blurDiv" text-center>
+      <ion-col [class.active-icon]="selectedIcon == dash.id" class="dn-item" col-2 *ngFor="let dash of items;">
+        <div class="dn-item-inner">
+          <img src="{{dash.asset}}" (click)="SelectIcon(dash.id)">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="text-align: center">
+    <p>
+      <button ion-button class="btn-cancel" round (click)="Cancel()">Cancel</button>
+      <button ion-button class="btn-save" round (click)="Save()">Save</button>
+    </p>
+    <br />
+    <p>
+      <button ion-button color="danger" round *ngIf="isDelete" (click)="DeleteTool()">Delete</button>
+    </p>
+  </div>
+</ion-content>

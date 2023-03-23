@@ -1,0 +1,125 @@
+<!--
+  Generated template for the DailyMaintenancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle="Sidemenu" icon-only color="light" start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title text-center>Daily Plan</ion-title>
+    <ion-buttons end>
+      <button class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <p><strong>What am I like on my best day?</strong></p>
+    <p>How would other people describe me, or how would I describe myself, when I’m well or when I’m doing the things I
+      want to do with my life?</p>
+    <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+      <ion-item *ngIf="item.QId==1" class="daily-maintenance-list">
+        <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="2" QId="1"
+          [required]="true" type="text">
+        </inline-form>
+        <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ1Item(item.Id)"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-list [formGroup]="ContentForm">
+      <ion-item class="daily-maintenance-list" *ngIf="isaddQ1item">
+        <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ1Item(1)" placeholder="Enter your text"></ion-input>
+        <ion-icon name="close" color="header" item-end (click)="DeleteQ1Item()"></ion-icon>
+      </ion-item>
+      <ion-item class="add-item-btn">
+        <button ion-button small clear color="primary" (click)="ToggleQ1Input()">
+          <ion-icon name="add"></ion-icon>&nbsp;Add Item
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  &nbsp;
+   <div>
+    <p>What do I need to do every day to stay well or stay on track with my goals?</p>
+    <ion-list>
+        <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+            <ion-item *ngIf="item.QId==2" class="daily-maintenance-list" >
+              <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="2"QId="2"
+                [required]="true" type="text">
+              </inline-form>
+              <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ2Item(item.Id)"></ion-icon>
+            </ion-item>
+          </ion-list>
+          <ion-list [formGroup]="ContentForm">
+            <ion-item class="daily-maintenance-list" *ngIf="isaddQ2item">
+              <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ2Item(2)" placeholder="Enter your text"></ion-input>
+              <ion-icon name="close" color="header" item-end (click)="DeleteQ2Item()"></ion-icon>
+            </ion-item>
+            <ion-item class="add-item-btn">
+              <button ion-button small clear color="primary" (click)="ToggleQ2Input()">
+                <ion-icon name="add"></ion-icon>&nbsp;Add Item
+              </button>
+            </ion-item>
+          </ion-list>
+          &nbsp;
+    </ion-list>
+  </div>
+  <div>
+    <p>What things might I need to do on some days to stay well? When or how often do I need to do them?</p>
+    <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==3" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="2"QId="3"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ3Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ3item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ3Item(3)" placeholder="Enter your text"></ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ3Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ3Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+    &nbsp;
+  </div> 
+  <div>
+    <p>What does a typical day look like when I am taking care of my wellness or staying focused on my goals? What things would I do and when would I do them?</p>
+    <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==4" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="2"QId="4"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ4Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ4item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ4Item(4)" placeholder="Enter your text"></ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ4Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ4Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+    &nbsp;
+  </div> 
+    <p style="text-align: center">
+      <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+    </p>
+</ion-content>
+

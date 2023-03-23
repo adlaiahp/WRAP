@@ -1,0 +1,36 @@
+page-wellness-toolbox {
+    ion-list {
+        margin: 0px !important;
+    }
+    .scroll-content {
+        padding: 0px !important;
+    }
+    p.description {
+        padding: 1rem;
+    }
+    p.add-a-tool {
+        margin: 0px;
+        background-color: gainsboro;
+    }
+    span.button-inner {
+        text-transform: uppercase;
+    }
+    ion-item{
+            background: linear-gradient(to bottom, #95a2bf 0%, #4f639a 100%);
+            color: white;
+            text-transform: uppercase;
+             height: 5rem;
+    }
+    ion-label {
+        color: white;
+    }
+    button ion-icon {
+        color: white;
+    }
+    span.list-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-left: 1.3rem;
+    }
+
+}

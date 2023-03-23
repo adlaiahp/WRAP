@@ -1,0 +1,33 @@
+page-my-supporters {
+
+    .daily-maintenance-list{
+        background: transparent;
+        border-top: none!important;
+        border-bottom: 2px dashed grey;
+        ion-icon{
+            color: blue;
+            font-weight: bold;
+        }
+    }
+    .add-item-btn{
+        background: transparent;
+        border-bottom: none!important;
+        border-top: none!important;
+    }
+    input[type=text]:focus {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+      input {
+          border-radius: 10px;
+          height: 3.5rem;
+          width: 100%!important;
+      }
+      input{
+          border-bottom: transparent!important;
+      }
+      .page-slider{
+        background-color: transparent;
+        border: none;
+      }
+}

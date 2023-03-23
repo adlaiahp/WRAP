@@ -1,0 +1,63 @@
+<!--
+  Generated template for the WellnessToolboxPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle="Sidemenu" icon-only color="light" start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title text-center>Wellness Toolbox</ion-title>
+    <ion-buttons end>
+      <button class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+        <p>  </p>
+        <p class="description"><strong>Wellness Toolbox</strong></p>
+    <!-- <p class="description">Define the tools that help you feel better and stay well. Try adding tools like petting your
+      dog, meditating,
+      talking to a friend, drawing or exercise. These tools will be available to help you throughout your wellness
+      recovery.</p> -->
+      <p class="description" text-wrap>The wellness toolbox is the foundation for your WRAP. You will use these lists of wellness tools to build the action plans in each section of your WRAP. You can add to these lists at any time.</p>
+    <p class="description">What things do I already do to help myself feel well, stay well, and live the way I want to live?</p>
+    <ion-list *ngFor="let item of items" >
+      <ion-item *ngIf="item.QId == 1" class="items-list" (click)="updateTool(item.Id,item.IconId,item.QId)" >
+        <img  src="{{item.IconAsset}}" item-start width="32">
+        <span  class="list-title">{{item.Content}}</span>
+        <button  ion-button clear color="dark" item-end large>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+    <div style="text-align: center">
+      <p class="add-a-tool">
+        <button ion-button color="dark" full outline (click)="addtool(1)">+ Build Your Wellness Toolbox</button>
+      </p>
+      <p class="description"> What things would I like to try in the future?</p>
+      <ion-list *ngFor="let item of items">
+          <ion-item *ngIf="item.QId == 2" class="items-list" (click)="updateTool(item.Id,item.IconId,item.QId)" >
+            <img src="{{item.IconAsset}}" item-start width="32">
+            <span class="list-title">{{item.Content}}</span>
+            <button ion-button clear color="dark" item-end large>
+              <ion-icon name="create"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-list>
+        <div style="text-align: center">
+          <p class="add-a-tool">
+            <button ion-button color="dark" full outline (click)="addtool(2)">+ Build Your Wellness Toolbox</button>
+          </p>
+      <p style="text-align: center">
+        <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+      </p>
+        </div>
+    </div>
+</ion-content>

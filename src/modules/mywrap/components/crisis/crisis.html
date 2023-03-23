@@ -1,0 +1,198 @@
+<!--
+  Generated template for the CrisisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle="Sidemenu" icon-only color="light" start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title text-center>Crisis Plan</ion-title>
+    <ion-buttons end>
+      <button class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" alt="">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ng-container [ngSwitch]="pageNo">
+    <ion-list *ngSwitchCase="1">
+      <p><strong>Crisis Plan</strong></p>
+      <p>Your crisis plan is a tool to plan for the support you may need when you face a crisis. This plan can be the
+        basis for an advance directive, but it is not a legal document. Use your crisis plan to document your needs and
+        preferences and explain to others how you want to be supported through a crisis.</p>
+      <p>1. This plan was created on this date and replaces any plan with earlier dates: </p>
+      <ion-list class="daily-maintenance-list">
+        <ion-item>
+          <ion-datetime id="WhenWellDate" [style.opacity]="0.4" name="WhenWellDate" (ionBlur)="onSelectChange($event)"
+            (ionFocus)="ToggleInputItem($event);" displayFormat="MM-DD-YYYY" [(ngModel)]="WhenWellDate"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <p>2. This is what I look like when I’m well: </p>
+      <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==15" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="2"
+            QId="1" [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ1Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ1item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ1Item(15)" placeholder="Enter your text">
+          </ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ1Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ1Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+      <p>3. This is what I look like when it gets too bad for me to handle on my own:</p>
+      <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==16" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="6"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ2Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ2item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ2Item(16)" placeholder="Enter your text">
+          </ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ2Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ2Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+      <p>4. If my behavior endangers or has negative effects on me or others I want my supporters to:</p>
+      <ion-item [formGroup]="ContentForm">
+        <ion-textarea autosize id="endangers" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+          formControlName="endangers" (ionBlur)="UpdateItem($event)"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="2">
+      <p>5. If my supporters disagree on a course of action, I want them to settle the dispute in this way:</p>
+      <ion-list>
+        <ion-item [formGroup]="ContentForm">
+          <ion-textarea autosize id="disagree" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="disagree" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p>6. When I’m in a crisis, I want the following people to support me in these ways (list name, role, phone number,
+        and any other notes for each person):</p>
+      <ion-list>
+        <ion-item [formGroup]="ContentForm">
+          <ion-textarea autosize id="following" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="following" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p>7. When I’m in a crisis, the following people should not be involved in supporting me or making decisions on my
+        behalf (list name, relationship, and any details for each person):</p>
+      <ion-list>
+        <ion-item [formGroup]="ContentForm">
+          <ion-textarea autosize id="decisions" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="decisions" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p>8. When I’m in a crisis, please do these things to help me feel better and get back to wellness: </p>
+      <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==17" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="6"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ3Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ3item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ3Item(17)" placeholder="Enter your text">
+          </ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ3Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ3Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+    <ion-list *ngSwitchCase="3">
+      <p>9. When I’m in a crisis, please do not do these things, which do not help and would make things much worse: </p>
+      <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==18" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="6"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ4Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ4item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ4Item(18)" placeholder="Enter your text">
+          </ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ4Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ4Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+      <p>10. When I’m in a crisis, these tasks need to be taken care of, and here’s who I want to do them until I can
+        take over responsibility for them again (list the task or responsibility, the person you want to handle it,
+        their phone number, and any notes or instructions for each task):</p>
+      <ion-list>
+        <ion-item [formGroup]="ContentForm">
+          <ion-textarea autosize id="careof" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+            formControlName="careof" (ionBlur)="UpdateItem($event)"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <p>11. These are the signs that will let my supporters know it’s safe to stop using this crisis plan:</p>
+      <ion-list *ngFor="let item of items;let index = index;trackBy:trackByIndex;">
+        <ion-item *ngIf="item.QId==19" class="daily-maintenance-list">
+          <inline-form text-wrap [(ngModel)]="items[index].Content" Id={{items[index].Id}} ColumnName="" PageType="6"
+            [required]="true" type="text">
+          </inline-form>
+          <ion-icon name="close" class="close-icon" item-end (click)="DeleteQ4Item(item.Id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list [formGroup]="ContentForm">
+        <ion-item class="daily-maintenance-list" *ngIf="isaddQ5item">
+          <ion-input type="text" formControlName="Content" (ionBlur)="InsertQ5Item(19)" placeholder="Enter your text">
+          </ion-input>
+          <ion-icon name="close" color="header" item-end (click)="DeleteQ5Item()"></ion-icon>
+        </ion-item>
+        <ion-item class="add-item-btn">
+          <button ion-button small clear color="primary" (click)="ToggleQ5Input()">
+            <ion-icon name="add"></ion-icon>&nbsp;Add Item
+          </button>
+        </ion-item>
+      </ion-list>
+      <p style="text-align: center">
+        <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+      </p>
+    </ion-list>
+  </ng-container>
+  <ion-list>
+    <ion-item class="page-slider">
+      <ion-icon item-start large name="arrow-dropleft-circle" *ngIf="this.pageNo > 1" (click)="navigateleft()">
+      </ion-icon>
+      <p class="pagination">{{pageNo}}/{{maximumPage}}</p>
+      <ion-icon item-end large name="arrow-dropright-circle" *ngIf="this.pageNo < 3" (click)="navigateright()">
+      </ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,151 @@
+<!--
+  Generated template for the ValueEthicsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Values & Ethics</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    An assessment guide to assess the quality of care you are receiving from WRAPⓇ group facilitators, care providers
+    and other supporters. If you find that these values and ethics are not being followed, you can take one or more of
+    the following actions: ask the person or people to follow these values and ethics, or, in case of extreme violation
+    to your state agency of protection and advocacy.
+  </div>
+  <p class="cont">Click on a Value to see its indicator</p>
+  <br />
+
+  <div (click)="hope = !hope" class="cont">It is understood that there is hope, that people can get well, stay well for
+    long periods of time, and do the things they want to do with their lives.</div>
+  <br />
+  <span *ngIf="hope">
+    Indicator: WRAPⓇ group facilitators, care providers and other supporters do not make dire predictions about your
+    future. They have a hopeful attitude, talk with you about your recovery and encourage you to make hopeful plans for
+    your future.
+  </span>
+  <br />
+  <br />
+
+  <div (click)="determination =!determination" class="cont">Self determination,personal responsibility,empowerment, and
+    self-advocacy
+    are stressed.</div>
+  <br />
+  <span *ngIf="determination">
+    Indicator: You are encouraged to work on keeping control over your own life, or taking back that control if you
+    don't have it. Others are not trying to take away your control over your own life.
+  </span>
+  <br />
+  <br />
+
+  <div (click)="encouraged =!encouraged" class="cont">You are encouraged to make your own decisions, or when applicable
+    make
+    decisions with the group, and personal sharing is encouraged.</div>
+  <br />
+  <span *ngIf="encouraged">Indicator: All decisions are made by the people who will be personally affected by them. In
+    groups there is shared decision-making. Personal sharing within time and subject parameters is encouraged and
+    supported.</span>
+  <br />
+  <br />
+
+  <div (click)="treated =!treated" class="cont">You must be treated with dignity, compassion, mutual respect, and
+    unconditional high
+    regard at all times, and as equal to all others.</div>
+  <br />
+  <span *ngIf="treated">Indicator: You feel comfortable, safe and respected when you are in a WRAPⓇ group, with a care
+    provider or other supporter.</span>
+  <br />
+  <br />
+
+  <div (click)="unique =!unique" class="cont">You are accepted unconditionally as a unique and special person,
+    including acceptance
+    or diversity of culture, ethnicity, language, religion, race, gender, age, disability, sexual identity, and
+    ability.</div>
+  <br />
+  <span *ngIf="unique">Indicator: You feel accepted by others and there are no signs of discrimination or
+    discriminitory comments.</span>
+  <br />
+  <br />
+
+  <div (click)="nolimits =! nolimits" class="cont">It is understood that there are "no limits" to recovery.</div>
+  <br />
+  <span *ngIf="nolimits">Indicator: Your goals and plans are supported without judgment.</span>
+  <br />
+  <br />
+
+  <div (click)="opportunity =! opportunity" class="cont">You are always given the opportunity to explore choices and
+    options, and
+    are not expected to easily find simple, final answers.</div>
+  <br />
+  <span *ngIf="opportunity">Indicator: It is understood that you have personal choice and a variety of options to
+    choose
+    from.</span>
+  <br />
+  <br />
+
+  <div (click)="voluntary =!voluntary" class="cont"> All participation is voluntary.</div>
+  <br />
+  <span *ngIf="voluntary">Indicator: You are not forced to do anything you don't want to do.</span>
+  <br />
+  <br />
+
+  <div (click)="yourself =! yourself" class="cont">It is understood that you are the expert on yourself.</div>
+  <br />
+  <span *ngIf="yourself">Indicator: You are supported in speaking from your own experience and making your own
+    decisions based on what you know about yourself.</span>
+  <br />
+  <br />
+
+  <div (click)="strengths =!strengths" class="cont">The focus is on individual strengths, and away from perceived
+    deficits.</div>
+  <br />
+  <span *ngIf="strengths">Indicator: Your strengths are honored and valued, and others are not critical of you, there
+    is no negative judgments and no deficit-based assessments.</span>
+  <br />
+  <br />
+
+  <div (click)="clinical =!clinical" class="cont">Clinical, medical, and diagnostic language is avoided.</div>
+  <br />
+  <span *ngIf="clinical">Indicator: Others use language that is easily understood.</span>
+  <br />
+  <br />
+
+  <div (click)="peers =!peers" class="cont">It is understood that peers working together and learning from each other
+    to increase
+    mutual understanding, knowledge, and wellness promotion recovery.</div>
+  <br />
+  <span *ngIf="peers">Indicator: opportunities for peer support are available, easily accessible and recommended.</span>
+  <br />
+  <br />
+
+  <div (click)="strategies =!strategies" class="cont">Recommended strategies are simple and safe for anyone. Strategies
+    that may
+    have harmful effects, or are potentially dangerous are not suggested or recommended.</div>
+  <br />
+  <span *ngIf="strategies">Indicator: The focus is on strategies that are simple and safe, and away from strategies
+    that might have harmful side effects. You are directed to non-biased resources that will help inform your decisions
+    on these issues.</span>
+  <br />
+  <br />
+
+  <div (click)="symptoms =!symptoms" class="cont">Difficult feelings and behaviors are seen as normal responses to
+    traumatic circumstances and
+    in the context of what is happening, and not as "symptoms" or as confirmation of a diagnosis</div>
+  <br />
+  <span *ngIf="symptoms">Indicator: Others respond to your difficult feelings and behaviors with validaton, compassion
+    and support.</span>
+  <br />
+  <br />
+</ion-content>

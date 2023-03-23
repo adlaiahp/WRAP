@@ -1,0 +1,43 @@
+page-addtool {
+    .dn-item-inner{
+        background-color: white;
+        padding: .4rem .9rem;
+        margin: 3px;
+        border-radius: .5rem;
+        display: flex;
+        -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .item-checkbox-right {
+        flex-direction: row-center;
+      }  
+      .no-icon{
+          display: flex;
+          justify-content: center;
+          span{
+              margin-left: .8rem;
+          }
+      }
+      .btn-cancel{
+        color: white;
+        background: linear-gradient(to bottom, #4e5d87 0%, #132964 100%);
+      }
+      .btn-save{
+        color:black;
+        background: linear-gradient(to bottom, rgb(250, 203, 126) 0%, rgb(248, 176, 60) 100%)
+      }
+
+}
+.input-form{
+    margin: 10px 10px 0px 10px;
+}
+.active-icon{
+    opacity: 1 !important;
+}
+
+.blur-div ion-col:not(.active-icon){
+    opacity: 0.4;
+}

@@ -1,0 +1,57 @@
+page-triggers {
+
+    .daily-maintenance-list{
+        background: transparent;
+        border-top: none!important;
+        border-bottom: 2px dashed grey;
+        ion-icon{
+            color: blue;
+            font-weight: bold;
+        }
+    }
+    .add-item-btn{
+        background: transparent;
+        border-bottom: none!important;
+        border-top: none!important;
+    }
+    input[type=text]:focus {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+      input {
+          border-radius: 10px;
+          height: 3.5rem;
+          width: 100%!important;
+      }
+      input{
+          border-bottom: transparent!important;
+      }
+      .close-icon{
+          color: blue;
+          font-weight: bold;
+      }
+      .add-a-tool{
+        margin: 0px -16px;
+        background-color: gainsboro;
+    }
+    .items-list{
+        background: linear-gradient(to bottom, #95a2bf 0%, #4f639a 100%);
+        color: white;
+        text-transform: uppercase;
+        height: 5rem;
+}
+.items-list ion-label{
+    color: white;
+}
+.items-list button ion-icon{
+    color: white;
+}
+.items-list span.list-title{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 1.3rem;
+}
+.items{
+    margin: 0px -16px;
+}
+}

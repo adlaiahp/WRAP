@@ -1,0 +1,34 @@
+<!--
+  Generated template for the EmailmyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Email My Plan</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center class="abt-title"><strong>Email My Plan as a PDF</strong></div>
+  <div>Enter an address below to email your WRAP.</div>
+  <div class="cta">
+    <ion-item class="email-input">
+      <ion-input #emailTo type="email" id="emailTo"></ion-input>
+    </ion-item>
+    <ion-item class="abt-bk" style="text-align: center" no-lines>
+      <button ion-button full large color="tertiary" round (click)="sendpage(emailTo.value)">Submit</button>
+    </ion-item>
+  </div>
+
+</ion-content>

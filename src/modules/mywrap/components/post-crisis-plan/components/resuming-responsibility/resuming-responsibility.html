@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ResumingResponsibilityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>Timetable for Resuming Responsibility</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Develop your plan for resuming responsibilities by defining the responsibility, who helped with the
+    responsibility, and plans to resume responsibility.</p>
+  <ion-list *ngFor="let item of resumeItems;let i = index;let last=last">
+    <p>Responsibility</p>
+    <ion-item>
+      <ion-input [style.opacity]="(!last || isResume) ? 0.4 : 1" type="text" value={{item.Responsibility}} (ionFocus)="ToggleMultiInput($event);"
+        (ionBlur)="ToggleMultiUpdate($event,'Responsibility',item.Id);"></ion-input>
+    </ion-item>
+    <p>Who has been doing this while I was in crisis</p>
+    <ion-item>
+      <ion-input [style.opacity]="(!last || isResume) ? 0.4 : 1" type="text" value={{item.DoingCrisis}} (ionFocus)="ToggleMultiInput($event);"
+        (ionBlur)="ToggleMultiUpdate($event,'DoingCrisis',item.Id);"></ion-input>
+    </ion-item>
+    <p>While I am resuming this responsibility, I need</p>
+    <ion-item>
+      <ion-input [style.opacity]="(!last || isResume) ? 0.4 : 1" type="text" value={{item.WhileResuming}} (ionFocus)="ToggleMultiInput($event);"
+        (ionBlur)="ToggleMultiUpdate($event,'WhileResuming',item.Id);"></ion-input>
+    </ion-item>
+    <p>to</p>
+    <ion-item>
+      <ion-input [style.opacity]="(!last || isResume) ? 0.4 : 1" type="text" value={{item.ToResponsibility}} (ionFocus)="ToggleMultiInput($event);"
+        (ionBlur)="ToggleMultiUpdate($event,'ToResponsibility',item.Id);"></ion-input>
+    </ion-item>
+    <p>
+      Plan for resuming
+    </p>
+    <ion-list *ngFor="let list of item.lookup">
+      <ion-item>
+        <ion-input [style.opacity]="(isLookUp) ? 0.4 : 1" value={{list.Content}} (ionBlur)="UpdateSingleList($event,item.Id,list.Id)"
+          (ionFocus)="ToggleMultiInput($event);" type="text">
+        </ion-input>
+      </ion-item>
+      <button ion-button small clear color="primary" (click)="DeleteSingleList(list.Id);">
+        <ion-icon name="remove"></ion-icon>&nbsp;Remove Item
+      </button>
+    </ion-list>
+    <ion-item>
+      <button ion-button small clear id="careAdd" color="primary" (click)="AddSingleListItem(item.Id);">
+        <ion-icon name="add"></ion-icon>&nbsp;Add Item
+      </button>
+    </ion-item>
+    <ion-item>
+      <button ion-button small clear color="primary" (click)="DeleteMultiList(item.Id);">
+        <ion-icon name="remove"></ion-icon>&nbsp;Remove Responsibility
+      </button>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <button ion-button small clear color="primary" (click)="AddMultiListItem();">
+      <ion-icon name="add"></ion-icon>&nbsp;Add Responsibility
+    </button>
+  </ion-item>
+  <p style="text-align: center">
+    <button class="btn-save-yellow" ion-button color="primary" round (click)="sendpage()">Send Page</button>
+  </p>
+</ion-content>

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the WhatisWrapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header header-bg>
+  <ion-navbar hideBackButton>
+    <ion-title text-center>WRAP</ion-title>
+    <button ion-button menuToggle="Sidemenu" color="light" icon-only start style="display: block !important;">
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only class="header-logo" (click)="navigateToHome($event)">
+        <img src="assets/header_icon.png" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center class="abt-title"><strong>What is WRAP?</strong></div>
+  <div></div>
+  <div></div>
+  <p>
+    Wellness Recovery Action Plan (WRAP) is a prevention and wellness process that anyone can use to get well, stay well, and make their life more the way they want it to be. WRAP can be used to deal with any situation or challenge in our lives. It is designed to:</p>
+        <p>•	Decrease and prevent unwanted or troubling feelings or behaviors.</p>
+        <p>•	Increase the personal choices we make about how we live our lives.</p>
+        <p>•	Improve our quality of life.</p>
+        <p>•	Help us achieve our goals and dreams.</p>
+   <p> When you create a WRAP, it can be a game plan for your everyday life.    
+  </p>
+  <p>What do I want to accomplish with my WRAP?</p>
+  <ion-list [formGroup]="ContentForm">
+    <ion-item>
+      <ion-textarea autosize type="text" [style.opacity]="0.4" (ionFocus)="ToggleMultiInput($event);"
+      formControlName="whatisWrap" id="whatisWrap" (ionBlur)="UpdateItem($event)"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
